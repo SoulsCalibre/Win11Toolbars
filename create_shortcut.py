@@ -21,6 +21,10 @@ def terminal_prompt():
     return name, folder
 
 if __name__ == '__main__':
+    directory = os.getcwd() + '\\toolbars'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
     if len(sys.argv) < 3:
         name, folder = terminal_prompt()
     else:
@@ -30,7 +34,7 @@ if __name__ == '__main__':
             quit()
 
     shell = win32com.client.Dispatch("WScript.Shell")
-    shortcut = shell.CreateShortcut(os.getcwd() + '\\toolbars\\' + name + '.lnk')
+    shortcut = shell.CreateShortcut(directory + '\\' + name + '.lnk')
 
     shortcut.TargetPath = os.getcwd() + r'\list_widget\list_widget.exe'
     shortcut.Arguments = folder
