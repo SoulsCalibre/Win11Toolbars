@@ -2,6 +2,9 @@
 
 Toolbars was removed in windows 10. This is a python implementation of toolbars using tkinter.
 
+![Example](https://github.com/SoulsCalibre/Win11Toolbars/blob/main/example.gif)
+
+
 ## Requirements
 
 This script requires Python 3 to be installed on the system along with the following packages:
