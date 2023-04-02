@@ -8,7 +8,7 @@ This script requires Python 3 to be installed on the system along with the follo
 
 -   `win32com`
 -   `tkinter`
--   `pyinstaller` (If you plan on building list_widget yourself)
+-   `pyinstaller`
 
 ## Installation
 
@@ -23,15 +23,17 @@ cd Win11Toolbars
 pip install -r requirements.txt
 ```
 
+Run `build_list_widget.bat` to compile `list_widget.pyw` into an exe file. You should see a folder named `list_widget` in the directory.
+
 ## Usage
 
 To use the script, run the following command in the terminal:
 
 `python create_shortcut.py [name] [folder]`
 
-`name`: The name of the toolbar.
+`name`: The name of the toolbar. If not provided, the script will prompt for it.
 
-`folder`: The path of the folder to be added to the toolbar.
+`folder`: The path of the folder to be added to the toolbar. If not provided, the script will prompt to select a folder using a GUI window.
 
 Alternatively, you can run the script without arguments and a prompt to type the name and select a folder will be available.
 
@@ -39,7 +41,7 @@ This script will create shortcuts in the toolbar folder. You can pin these short
 
 ## Why compile `list_widget.pyw` into an exe file?
 
-Python files are not able to be pinned to the taskbar. Exe files and shortcuts to them can. If you would like, you can delete the `list_widget` folder and rebuild it using `build_list_widget.bat`. This requires the pyinstaller library.
+Python files are not able to be pinned to the taskbar. Exe files and shortcuts to them can.
 
 ## Notes
 
