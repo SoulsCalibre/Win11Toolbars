@@ -50,7 +50,10 @@ class FileListWidget(tk.Frame):
         self.current_index = -1  # current item under mouse pointer
 
         # Resize the window to fit the listbox 
-        self.root.geometry(f'{self.listbox.winfo_reqwidth()}x{self.listbox.winfo_reqheight()}')
+        #self.root.geometry(f'{self.listbox.winfo_reqwidth()}x{self.listbox.winfo_reqheight()}')
+        width = self.listbox.winfo_reqwidth()
+        height = min(self.listbox.winfo_reqheight(), 25 * len(self.filenames))  # set a maximum height of 25 files
+        self.root.geometry(f'{width}x{height}')
 
         # Get the position of the mouse cursor
         cursor_x = GetCursorPos()[0]
@@ -61,7 +64,7 @@ class FileListWidget(tk.Frame):
         taskbar_height = monitor_info.get("Monitor")[3] - monitor_info.get("Work")[3]
 
         x = cursor_x - (self.root.winfo_reqwidth() // 2)
-        y = self.root.winfo_screenheight() - self.listbox.winfo_reqheight() - taskbar_height
+        y = self.root.winfo_screenheight() - height - taskbar_height
         self.root.geometry(f"+{x}+{y}")
 
         self.listbox.focus_set()  # give focus to the listbox widget
@@ -103,11 +106,10 @@ class FileListWidget(tk.Frame):
         """Open selected file and close the window"""
         selection = self.listbox.curselection()
         if selection:
-            index = selection[0]
-            # filename = self.listbox.get(index)
-            os_startfile(os_path.join(self.directory, self.filenames[index]))
             self.root.destroy()
-
+            index = selection[0]
+            os_startfile(os_path.join(self.directory, self.filenames[index]))
+            
     def close_window(self, event):
         """Close window"""
         self.root.destroy()
